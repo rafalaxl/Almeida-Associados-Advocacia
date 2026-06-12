@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AreaCard from '../components/AreaCard.astro';
+import { Image } from 'astro:assets';
+import ricardoImg from '../../public/assets/ricardo_almeida.png';
+import helenaImg from '../../public/assets/helena_santos.png';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Attorney",
+  "name": "Almeida & Associados Advocacia",
+  "image": "https://almeidaassociados.com.br/assets/ricardo_almeida.png",
+  "@id": "https://almeidaassociados.com.br/#legal-service",
+  "url": "https://almeidaassociados.com.br",
+  "telephone": "+551133333333",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Paulista, 1000, 10º andar",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "postalCode": "01310-100",
+    "addressCountry": "BR"
+  },
+  "priceRange": "$$$$"
+});
+
+const specialties = [
+  { title: "Direito Societário", desc: "Estruturação de holding, fusões, aquisições (M&A) e governança corporativa sob medida para proteção de ativos.", href: "/atuacao/#societario" },
+  { title: "Direito Tributário", desc: "Planejamento tributário estratégico, recuperação de créditos e defesas administrativas e judiciais de alta complexidade.", href: "/atuacao/#tributario" }
+];
+---
+
+<Layout 
+  title="Direito Societário e Tributário | Almeida & Associados" 
+  description="Protegemos o patrimônio e a estrutura jurídica da sua empresa com teses societárias e tributárias sólidas. Advocacia boutique especializada de alto nível."
+  schema={schema}
+>
+  <!-- Hero Section -->
+  <section class="bg-[var(--color-brand-500)] text-white py-20 px-6 md:px-12 flex items-center border-b border-[var(--color-highlight)]">
+    <div class="max-w-4xl mx-auto text-center md:text-left">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-[var(--color-highlight)] font-semibold mb-3 block">Direito Societário & Tributário</span>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold leading-tight mb-6 max-w-3xl">
+        Protegemos o patrimônio e a estrutura jurídica da sua empresa com teses validadas.
+      </h1>
+      <p class="font-sans text-base md:text-lg text-[var(--brand-100)] mb-8 max-w-2xl leading-relaxed">
+        Soluções jurídicas preventivas e contenciosas voltadas para a segurança e otimização fiscal de corporações de médio e grande porte.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="/contato/" class="bg-[var(--color-highlight)] hover:bg-[var(--color-highlight-hover)] text-white font-semibold px-8 py-3 rounded-[var(--radius-sm)] transition-colors text-center text-sm">
+          Agendar Avaliação Técnica
+        </a>
+        <a href="/atuacao/" class="border border-white hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-[var(--radius-sm)] transition-colors text-center text-sm">
+          Conhecer Teses de Atuação
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialties Section -->
+  <section class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-2xl md:text-3xl font-bold text-[var(--color-accent)] mb-4">Áreas de Especialidade</h2>
+      <p class="font-sans text-sm text-[var(--color-text-secondary)] max-w-xl mx-auto">
+        Atuação técnica altamente especializada focada nas necessidades corporativas contemporâneas.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {specialties.map(spec => (
+        <AreaCard title={spec.title} description={spec.desc} href={spec.href} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="bg-[var(--color-bg-secondary)] border-t border-b border-[var(--color-border)] py-20 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-[var(--color-accent)] mb-4">Sócios Fundadores</h2>
+        <p class="font-sans text-sm text-[var(--color-text-secondary)]">
+          Excelência técnica e dedicação exclusiva à defesa dos interesses de nossos clientes.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div class="flex flex-col items-center text-center">
+          <Image src={ricardoImg} alt="Dr. Ricardo Almeida" class="w-48 h-48 rounded-[var(--radius-lg)] object-cover mb-4 border-2 border-[var(--color-border)]" loading="eager" width={400} height={400} format="webp" />
+          <h3 class="font-serif text-lg font-bold text-[var(--color-accent)]">Dr. Ricardo Almeida</h3>
+          <span class="font-sans text-xs text-[var(--color-highlight)] uppercase tracking-wider mb-2">Sócio-Fundador • Direito Tributário</span>
+          <p class="font-sans text-xs text-[var(--color-text-secondary)] max-w-xs">Mais de 20 anos de atuação no contencioso tributário e planejamento fiscal de grandes grupos.</p>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <Image src={helenaImg} alt="Dra. Helena Santos" class="w-48 h-48 rounded-[var(--radius-lg)] object-cover mb-4 border-2 border-[var(--color-border)]" loading="eager" width={400} height={400} format="webp" />
+          <h3 class="font-serif text-lg font-bold text-[var(--color-accent)]">Dra. Helena Santos</h3>
+          <span class="font-sans text-xs text-[var(--color-highlight)] uppercase tracking-wider mb-2">Sócia-Fundadora • Direito Societário</span>
+          <p class="font-sans text-xs text-[var(--color-text-secondary)] max-w-xs">Especialista em M&A, reestruturações societárias e planejamento sucessório corporativo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

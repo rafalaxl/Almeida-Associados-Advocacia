@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { title, description, href } = Astro.props;
+---
+
+<div class="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] p-6 transition-all duration-300 hover:border-[var(--color-highlight)] flex flex-col justify-between">
+  <div>
+    <div class="h-1 w-12 bg-[var(--color-highlight)] mb-4"></div>
+    <h3 class="font-serif text-lg font-bold text-[var(--color-accent)] mb-2">{title}</h3>
+    <p class="font-sans text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">{description}</p>
+  </div>
+  <a href={href} class="font-sans text-xs uppercase tracking-wider text-[var(--color-highlight)] hover:text-[var(--color-highlight-hover)] font-semibold flex items-center group">
+    Saber mais 
+    <svg class="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </a>
+</div>

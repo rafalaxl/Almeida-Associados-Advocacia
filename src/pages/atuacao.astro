@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Áreas de Atuação | Almeida & Associados",
+  "description": "Nossas teses de atuação jurídica especializada em Direito Societário e Tributário."
+});
+---
+
+<Layout 
+  title="Áreas de Atuação | Almeida & Associados" 
+  description="Conheça nossas teses e soluções jurídicas em Direito Societário, Planejamento Tributário e Reorganizações Corporativas."
+  schema={schema}
+>
+  <section class="bg-[var(--color-brand-600)] text-white py-16 px-6 md:px-12 text-center">
+    <span class="font-sans text-xs uppercase tracking-[0.2em] text-[var(--color-highlight)] font-semibold mb-2 block">Especialidades</span>
+    <h1 class="font-serif text-3xl md:text-4xl font-bold">Nossas Teses de Atuação</h1>
+  </section>
+
+  <section class="py-16 px-6 md:px-12 max-w-5xl mx-auto space-y-16">
+    <!-- Societário -->
+    <div id="societario" class="scroll-mt-24 border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-8">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="text-xs font-sans font-bold bg-[var(--color-accent-subtle)] text-[var(--color-accent)] px-3 py-1 uppercase tracking-wider">01</span>
+        <h2 class="font-serif text-xl md:text-2xl font-bold text-[var(--color-accent)]">Direito Societário</h2>
+      </div>
+      <p class="font-sans text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
+        Atuamos na assessoria de reestruturações societárias complexas, visando proteção patrimonial e eficiência de governança:
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans text-xs text-[var(--color-text-secondary)]">
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Planejamento Sucessório & Holdings Familiares</li>
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Fusões, Aquisições & Cisões (M&A)</li>
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Acordos de Sócios & Proteção Patrimonial</li>
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Governança Corporativa e Compliance</li>
+      </ul>
+    </div>
+
+    <!-- Tributário -->
+    <div id="tributario" class="scroll-mt-24 border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-8">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="text-xs font-sans font-bold bg-[var(--color-accent-subtle)] text-[var(--color-accent)] px-3 py-1 uppercase tracking-wider">02</span>
+        <h2 class="font-serif text-xl md:text-2xl font-bold text-[var(--color-accent)]">Direito Tributário</h2>
+      </div>
+      <p class="font-sans text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
+        Defesa ativa do patrimônio corporativo por meio de inteligência fiscal preventiva e contenciosa:
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans text-xs text-[var(--color-text-secondary)]">
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Planejamento Tributário Estratégico</li>
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Recuperação de Créditos Fiscais por via Administrativa</li>
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Defesas em Execuções Fiscais e Autos de Infração</li>
+        <li class="flex items-start"><span class="text-[var(--color-highlight)] mr-2">•</span> Consultoria de Impacto de Novas Legislações</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import ricardoImg from '../../public/assets/ricardo_almeida.png';
+import helenaImg from '../../public/assets/helena_santos.png';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Quem Somos | Almeida & Associados",
+  "description": "Nossa história e compromisso com a excelência jurídica no Direito Societário e Tributário."
+});
+---
+
+<Layout 
+  title="Quem Somos | Almeida & Associados" 
+  description="Saiba mais sobre a nossa história, valores e compromisso com a advocacia de alto nível para empresas e holdings."
+  schema={schema}
+>
+  <section class="bg-[var(--color-brand-600)] text-white py-16 px-6 md:px-12 text-center">
+    <span class="font-sans text-xs uppercase tracking-[0.2em] text-[var(--color-highlight)] font-semibold mb-2 block">Nossa História</span>
+    <h1 class="font-serif text-3xl md:text-4xl font-bold">Quem Somos</h1>
+  </section>
+
+  <section class="py-16 px-6 md:px-12 max-w-4xl mx-auto">
+    <div class="prose font-sans text-base text-[var(--color-text-secondary)] leading-relaxed space-y-6">
+      <p>
+        Fundado com a premissa de oferecer atendimento jurídico altamente individualizado, o escritório <strong>Almeida & Associados</strong> consolidou-se como uma banca boutique de referência em Direito Tributário e Direito Societário.
+      </p>
+      <p>
+        Nossa atuação é pautada na união entre o rigor técnico acadêmico e uma visão prática voltada para os negócios dos nossos clientes. Acreditamos que a advocacia corporativa moderna deve atuar como uma parceira estratégica de crescimento seguro.
+      </p>
+      
+      <div class="h-px bg-[var(--color-border)] my-8"></div>
+      
+      <h2 class="font-serif text-xl font-bold text-[var(--color-accent)]">Nossa Filosofia de Trabalho</h2>
+      <ul class="list-disc pl-5 space-y-2 text-sm">
+        <li><strong>Foco em Resultados de Negócios:</strong> Nossas teses jurídicas são estruturadas sob a ótica da viabilidade econômica e segurança financeira corporativa.</li>
+        <li><strong>Atendimento Altamente Exclusivo:</strong> Limitação no número de clientes ativos para que cada sócio acompanhe pessoalmente cada caso.</li>
+        <li><strong>Ética e Transparência Absoluta:</strong> Comunicação contínua e relatórios detalhados de provisionamento de riscos.</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

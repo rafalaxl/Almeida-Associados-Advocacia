@@ -1,0 +1,93 @@
+---
+const currentPath = Astro.url.pathname;
+const menuItems = [
+  { name: 'Início', path: '/' },
+  { name: 'Quem Somos', path: '/sobre/' },
+  { name: 'Áreas de Atuação', path: '/atuacao/' },
+  { name: 'Artigos', path: '/blog/' },
+  { name: 'Contato', path: '/contato/' }
+];
+---
+
+<header class="sticky top-0 z-50 bg-[var(--color-bg-secondary)]/90 backdrop-blur-md border-b border-[var(--color-border)] px-6 py-4 md:px-12">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="/" class="flex flex-col select-none" id="header-logo">
+      <span class="font-serif text-lg md:text-xl font-bold tracking-wider text-[var(--color-accent)]">ALMEIDA & ASSOCIADOS</span>
+      <span class="font-sans text-[10px] uppercase tracking-[0.2em] text-[var(--color-highlight)]">Advocacia Corporativa</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8" aria-label="Navegação Principal">
+      {menuItems.map(item => (
+        <a 
+          href={item.path} 
+          class={`font-sans text-sm tracking-wide transition-colors duration-200 hover:text-[var(--color-highlight)] ${
+            (currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path))) 
+              ? 'text-[var(--color-highlight)] font-semibold border-b border-[var(--color-highlight)] pb-1' 
+              : 'text-[var(--color-text-secondary)]'
+          }`}
+        >
+          {item.name}
+        </a>
+      ))}
+      <a 
+        href="/contato/" 
+        class="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white text-xs font-semibold px-5 py-2.5 rounded-[var(--radius-sm)] transition-colors duration-300"
+      >
+        Consulta Técnica
+      </a>
+    </nav>
+
+    <!-- Mobile Navigation Menu Toggle -->
+    <button 
+      id="mobile-menu-toggle" 
+      class="md:hidden text-[var(--color-text-primary)] hover:text-[var(--color-highlight)] focus:outline-none focus:ring-2 focus:ring-[var(--color-highlight)]" 
+      aria-label="Abrir Menu"
+      aria-expanded="false"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="hidden md:hidden absolute left-0 right-0 top-full bg-[var(--color-bg-secondary)] border-b border-[var(--color-border)] px-6 py-6 transition-all duration-300">
+    <nav class="flex flex-col space-y-4" aria-label="Navegação Mobile">
+      {menuItems.map(item => (
+        <a 
+          href={item.path} 
+          class="font-sans text-base text-[var(--color-text-secondary)] hover:text-[var(--color-highlight)] transition-colors py-2 border-b border-[var(--color-border-subtle)]"
+        >
+          {item.name}
+        </a>
+      ))}
+      <a 
+        href="/contato/" 
+        class="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white text-center text-sm font-semibold py-3 rounded-[var(--radius-sm)] transition-colors mt-2"
+      >
+        Agendar Consulta Técnica
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+
+  toggleBtn?.addEventListener('click', () => {
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    toggleBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    menu?.classList.toggle('hidden');
+    
+    if (icon) {
+      if (isExpanded) {
+        icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      } else {
+        icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+      }
+    }
+  });
+</script>
